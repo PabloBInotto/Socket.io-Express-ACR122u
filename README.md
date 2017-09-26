@@ -1,6 +1,8 @@
 # Socket.io-Express-ACR122u
 Workers presence control - Node js
 
+Youtube: https://youtu.be/e-e0zW6K4vY
+
 Instale o driver para o dispositivo de leitura ACR122u:
 
 http://www.acs.com.hk/download-driver-unified/6258/ACS-Unified-Driver-Lnx-Mac-108-P.zip.unzip
