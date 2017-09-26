@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var io = require('socket.io')();
 var socket = require('./lib/socket.js')(io);
-var reader = require('./lib/reader.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
