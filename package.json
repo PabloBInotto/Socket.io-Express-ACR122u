@@ -1,9 +1,9 @@
 {
-  "name": "rfio",
+  "name": "Socket.io-Express-ACR122u",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "devDependencies": {
     "cors": "^2.7.1",
