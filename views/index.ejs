@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  </head>
+  <style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 50px */
+.w3-sidebar {width: 100px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (12px) */
+#main {margin-left: 10px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+.status0{
+	background-color: red;
+	}
+.status1{
+	background-color: green;
+	}
+</style>
+<body class="w3-black">
+<div  class="w3-container w3-margin-top">
+	<form action="/post" role="form" method="post" enctype="multipart/form-data">
+		<input id="divform" type="text" name="rfid" value="">
+		<input name="nome" type="text" placeholder="Nome">
+		<select name="depto">
+			<option value="Celulares">MC</option>
+			<option value="Monitores">MNT</option>
+			<option value="Notebook">Notebook</option>
+			<option value="Washing Machine">Washing Machine</option>
+			<option value="Flatrom">Flatrom</option>
+		</select>		
+		<select name="turno">
+			<option value="Primeiro">Primeiro</option>
+			<option value="Segundo">Segundo</option>
+			<option value="Terceiro">Terceiro</option>
+		</select>
+		<input name="email" type="text" placeholder="E-mail">
+		<input name="image" type="file" accept="image/*"/>
+		<button type="submit"> + Add </button>
+	</form>
+</div>
+	<div class="w3-container">
+		<h3><%= title %></h3>
+	</div>	
+	<div class="w3-container" id = "main">
+		<% for (var i=0; i < task.length; i++){ %>
+		<div class="w3-display-container w3-card-4  w3-hover-opacity" style="width: 300px; margin:5px; float: left;">
+			<header class="w3-container w3-light-grey">
+				<%= task[i].nome %>
+			</header>
+			<div class="w3-container">
+				<img src="/images/<%= task[i].foto %>" alt="<%= task[i].nome %>" class="w3-left w3-circle w3-margin-right" style="width: 110px">
+							<p>Local: <%= task[i].dept %></td></p>
+							<p>Turno: <%= task[i].turno %></p>
+							<p id="<%= task[i].rfid %>" class="status<%= task[i].status %>">-</p>
+			</div>
+			<div class="w3-display-hover w3-display-middle w3-xlarge">
+				<button class="w3-button w3-red"><a style="text-align: right;" href="/<%= task[i].rfid %>">Delete</a></button>
+			</div>
+		</div>
+		<% } %>
+	</div>
+	<script src="/javascripts/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/main.js"></script>
+  </body>
+</html>
