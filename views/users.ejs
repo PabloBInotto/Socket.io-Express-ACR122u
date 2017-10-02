@@ -3,17 +3,50 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/sketch.js"></script>
+    <script language="javascript" type="text/javascript" src="/javascripts/p5.js"></script>
+    <script language="javascript" src="/javascripts/p5.dom.js"></script>
+    <script language="javascript" type="text/javascript" src="/javascripts/p5.sound.js"></script>
   </head>
   <body>
-    <div class="w3-container">
-    <h1><%= title %></h1>
-    <p>Management users <%= title %></p>
-    <p>Pablo Binotto</p>
     
-    </div>
-		
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/javascripts/main.js"></script>
+    <div class="w3-container">	  
+	<button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-black w3-left-align">Setup database</button>
+	<div id="Demo1" class="w3-container w3-hide">
+	  <p><%= title %> - <%= status %></p>
+		<p>
+			<select id='word'>
+				<option>host</option>
+				<option>user</option>
+				<option>password</option>
+				<option>port</option>		
+			</select>
+			<input id='score'></input>
+			<button id='submit'>Update</button>
+		</p>
+	</div>
+	
+	<iframe src="http://127.0.0.1:3000/" width="100%" height="800">
+		Not support iframe
+	</iframe>
+
+	</div>
+	<script>
+	function myFunction(id) {
+		var x = document.getElementById(id);
+		if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+		} else { 
+			x.className = x.className.replace(" w3-show", "");
+		}
+	}
+	</script>
+
+    
   </body>
 </html>
