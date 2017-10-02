@@ -1,8 +1,49 @@
 var express = require('express');
 var router = express.Router();
 var task = require('./../model/tasks');
-var multer  = require('multer')
+var multer  = require('multer');
+var fs = require('fs');
 var db = require('./../lib/con.js');
+var dados = fs.readFileSync('./data.json');
+var js = JSON.parse(dados);
+console.log(js);
+
+// show json data on canvas
+router.get('/all', show);
+function show(req, res){
+	res.send(js);
+}
+// pudate json data
+router.get('/users/:word/:score?', addWord);
+function addWord(req, res){
+	var data = req.params;
+	var word = data.word;
+	var score = data.score;
+	var reply;
+	if(!score){
+	reply = {
+			msg : "You need fill the some value to " + word
+		}
+	}else{
+	js[word] = score;
+	var data = JSON.stringify(js);
+	fs.writeFile('./data.json', data, finished);
+	function finished(err){
+		console.log('All set');
+	}
+	reply = {
+			msg : "You updated the " + word + " value"
+		}
+	}
+	res.send(reply);
+}
+// GET users page
+router.get('/users', upWord);
+function upWord(req, res){
+	res.render('users', { title: 'ACR122u - NFC Presence control', status: 'Set datbase'});
+}
+
+
 /* GET home page. */
 
 router.get('/', function(req, res) {
