@@ -27,6 +27,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 	<form action="/post" role="form" method="post" enctype="multipart/form-data">
 		<input id="divform" type="text" name="rfid" value="">
 		<input name="nome" type="text" placeholder="Nome">
+		
 		<select name="depto">
 			<option value="Celulares">MC</option>
 			<option value="Monitores">MNT</option>
@@ -41,6 +42,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 		</select>
 		<input name="email" type="text" placeholder="E-mail">
 		<input name="image" type="file" accept="image/*"/>
+		<input name="paymentPointer" type="text" placeholder="PaymentPointer">
+		<input name="wageperminute" type="text" placeholder="minutley wage XRP">
 		<button type="submit"> + Add </button>
 	</form>
 </div>
