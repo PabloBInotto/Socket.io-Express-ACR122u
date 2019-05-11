@@ -26,24 +26,24 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <div  class="w3-container w3-margin-top">
 	<form action="/post" role="form" method="post" enctype="multipart/form-data">
 		<input id="divform" type="text" name="rfid" value="">
-		<input name="nome" type="text" placeholder="Nome">
+		<input name="name" type="text" placeholder="Name">
 		
 		<select name="depto">
-			<option value="Celulares">MC</option>
-			<option value="Monitores">MNT</option>
-			<option value="Notebook">Notebook</option>
-			<option value="Washing Machine">Washing Machine</option>
-			<option value="Flatrom">Flatrom</option>
+			<option value="Celulares">IT</option>
+			<option value="Monitores">Kitchen</option>
+			<option value="Notebook">Warehouse</option>
+			<option value="Washing Machine">Cleaners</option>
+			<option value="Flatrom">Security</option>
 		</select>		
 		<select name="turno">
-			<option value="Primeiro">Primeiro</option>
-			<option value="Segundo">Segundo</option>
-			<option value="Terceiro">Terceiro</option>
+			<option value="Primeiro">Morning Shift</option>
+			<option value="Segundo">Afternoon shift</option>
+			<option value="Terceiro">Night Shift</option>
 		</select>
 		<input name="email" type="text" placeholder="E-mail">
 		<input name="image" type="file" accept="image/*"/>
-		<input name="paymentPointer" type="text" placeholder="PaymentPointer">
-		<input name="wageperminute" type="text" placeholder="minutley wage XRP">
+		<input name="receiver" type="text" placeholder="PaymentPointer">
+		<input name="sourceAmount" type="text" placeholder="minutley wage XRP">
 		<button type="submit"> + Add </button>
 	</form>
 </div>
@@ -54,12 +54,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 		<% for (var i=0; i < task.length; i++){ %>
 		<div class="w3-display-container w3-card-4  w3-hover-opacity" style="width: 300px; margin:5px; float: left;">
 			<header class="w3-container w3-light-grey">
-				<%= task[i].nome %>
+				<%= task[i].name %>
 			</header>
 			<div class="w3-container">
-				<img src="/images/<%= task[i].foto %>" alt="<%= task[i].nome %>" class="w3-left w3-circle w3-margin-right" style="width: 110px">
-							<p>Local: <%= task[i].dept %></td></p>
-							<p>Turno: <%= task[i].turno %></p>
+				<img src="/images/<%= task[i].foto %>" alt="<%= task[i].name %>" class="w3-left w3-circle w3-margin-right" style="width: 110px">
+							<p>Dept: <%= task[i].dept %></td></p>
+							<p>Shift: <%= task[i].turno %></p>
+							<p>PaymentPointer: <%= task[i].receiver %></p>
 							<p id="<%= task[i].rfid %>" class="status<%= task[i].status %>">-</p>
 			</div>
 			<div class="w3-display-hover w3-display-middle w3-xlarge">
