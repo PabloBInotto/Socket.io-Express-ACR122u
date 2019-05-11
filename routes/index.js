@@ -74,7 +74,7 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
 	  cb(null, file.originalname)
 	  var post = req.body;
-	  db.query('INSERT INTO workers SET ?',{rfid: post.rfid,nome: post.nome, dept: post.depto, turno: post.turno, email: post.email, foto: file.originalname});
+	  db.query('INSERT INTO workers SET ?',{rfid: post.rfid,name: post.name, dept: post.depto, turno: post.turno, email: post.email, foto: file.originalname, receiver: post.receiver, sourceAmount: post.sourceAmount});
 	}
 })
 
@@ -83,5 +83,15 @@ var upload = multer({ storage: storage })
 router.post('/post', upload.any('image'), function (req, res) {
 		  res.redirect('/');
 })
+
+
+pay;
+interval = setInterval(pay, 10000);
+
+function pay()
+{
+	var ilp = new (require('../lib/ilp.js'))
+	
+}
 
 module.exports = router;
