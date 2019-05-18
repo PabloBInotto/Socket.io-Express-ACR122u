@@ -67,21 +67,29 @@ router.get('/:id', function(req, res) {
 });
 
 /* upload and post users. */
+var photo = '';
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/images')
   },
   filename: function (req, file, cb) {
-	  cb(null, file.originalname)
-	  var post = req.body;
-	  db.query('INSERT INTO workers SET ?',{rfid: post.rfid,nome: post.nome, dept: post.depto, turno: post.turno, email: post.email, foto: file.originalname});
+      cb(null, file.originalname)
+      photo = file.originalname;
+	  
 	}
 })
 
 var upload = multer({ storage: storage })
 
 router.post('/post', upload.any('image'), function (req, res) {
-		  res.redirect('/');
+    var post = req.body;
+	  db.query("INSERT INTO `names` (`nome`, `foto`, `rfid`, `dept`, `turno`, `email`, `receiver`, `tax_receiver`, `pension_receiver`, `amount`, `tax_amount`, `pension_amount`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", post.nome.toString(), photo, post.rfid, post.dept, post.turno, post.email, post.receiver, post.tax_receiver, post.pension_receiver, post.amount, post.tax_amount, post.pension_amount, function(err, result){
+            if(err) throw err;
+                console.log("1 record inserted");
+                res.redirect('/');
+            });
+        // res.send(username);
+        // var sql = 'INSERT INTO workers SET ?',{rfid: post.rfid,nome: post.nome, dept: post.depto, turno: post.turno, email: post.email, foto: file.originalname};
 })
 
 module.exports = router;
