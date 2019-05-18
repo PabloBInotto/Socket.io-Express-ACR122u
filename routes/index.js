@@ -88,8 +88,5 @@ router.post('/post', upload.any('image'), function (req, res) {
                 console.log("1 record inserted");
                 res.redirect('/');
             });
-        // res.send(username);
-        // var sql = 'INSERT INTO workers SET ?',{rfid: post.rfid,nome: post.nome, dept: post.depto, turno: post.turno, email: post.email, foto: file.originalname};
 })
-
 module.exports = router;
