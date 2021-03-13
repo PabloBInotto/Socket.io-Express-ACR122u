@@ -29,7 +29,7 @@ Após acessar a pasta digite os comandos abaixo para instalar o driver
 
 ~$ make
 
-~$ make install
+~$ make install 
 
 A instalação leva alguns minutos.
 
