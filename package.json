@@ -20,6 +20,7 @@
     "mysql": "^2.14.0",
     "pcsclite": "^0.4.12",
     "serve-favicon": "~2.4.2",
-    "socket.io": "^1.4.5"
+    "socket.io": ">=2.4.0"
   }
 }
+
